@@ -16,6 +16,15 @@ public class TopDownMovement: MonoBehaviour
 
     public void Move(Vector2 direction)
     {
-         rb.velocity = direction * moveSpeed;
+        if (direction.magnitude > 0.1f)
+        {
+            direction.Normalize();
+        }
+        else
+        {
+            direction = Vector2.zero;
+        }
+
+        rb.velocity = direction * moveSpeed;
     }
 }
