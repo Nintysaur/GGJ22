@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TestsScenes/EilidhScene.unity
+    guid: a704e679c9fe8a6449a4bb5a9dbfd918
+  - enabled: 1
+    path: Assets/Scenes/TestsScenes/EilidhScene2.unity
+    guid: e735724263d0dac40b55a964584a367b
   m_configObjects: {}
