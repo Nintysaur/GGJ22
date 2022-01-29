@@ -18,7 +18,7 @@ public class ScreenshakeController : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            ShakeStart(.5f, 1f);
+            ShakeStart(.2f, .4f);
         }    
     }
 
@@ -28,8 +28,8 @@ public class ScreenshakeController : MonoBehaviour
         {
             shakeTimeLeft -= Time.deltaTime;
 
-            float xAmount = Random.Range(-1f, 1f) * shakePower;
-            float yAmount = Random.Range(-1f, 1f) * shakePower;
+            float xAmount = Random.Range(-.2f, .2f) * shakePower;
+            float yAmount = Random.Range(-.2f, .2f) * shakePower;
 
             transform.position += new Vector3(xAmount, yAmount, 0f);
         }
