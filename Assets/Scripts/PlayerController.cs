@@ -8,7 +8,7 @@ public class PlayerController : BaseInvertable, IMortalObject
     private GameController gc;
 
     public bool Dead { get; set; }
-    public int HealthMax = 3;
+    public int HealthMax = 5;
     public int HealthCurrent;
 
     [SerializeField] GameObject projectile;
@@ -122,5 +122,10 @@ public class PlayerController : BaseInvertable, IMortalObject
             //Game Over
             print("GameOver");
         }
+    }
+
+    public int GetHealth()
+    {
+        return HealthCurrent;
     }
 }

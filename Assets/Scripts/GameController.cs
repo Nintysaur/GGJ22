@@ -122,6 +122,15 @@ public class GameController : MonoBehaviour
         return false;
     }
 
+    public bool IsSpiritCooldown()
+    {
+        if (Time.time < inversionReadyAt)
+        {
+            return true;
+        }
+        return false;
+    }
+
 
     public static void RegisterInvertable(BaseInvertable newInvertable )
     {
