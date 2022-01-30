@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 13.223755, y: -25}
+  m_AnchoredPosition: {x: -55.83264, y: -63.162598}
   m_SizeDelta: {x: 201.39038, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1772794841570840509
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SPIRIT:'
+  m_text: 'SCORE:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c18e2a9c21962cd4ab616dd40a8f4e5e, type: 2}
   m_sharedMaterial: {fileID: 1542142150645223696, guid: c18e2a9c21962cd4ab616dd40a8f4e5e, type: 2}
@@ -168,7 +168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 213.32343, y: -25}
+  m_AnchoredPosition: {x: 144.26715, y: -63.162598}
   m_SizeDelta: {x: 201.39038, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1772794843137546113
