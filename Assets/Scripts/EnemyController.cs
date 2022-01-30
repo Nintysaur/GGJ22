@@ -21,6 +21,9 @@ public class EnemyController : BaseInvertable, IMortalObject
     [SerializeField] int killScore = 100;
     [SerializeField] int eatScore = 40;
 
+    [SerializeField] Sprite tombstone;
+    [SerializeField] GameObject animatedChild;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -130,6 +133,8 @@ public class EnemyController : BaseInvertable, IMortalObject
     {
         Dead = true;
 
+        animatedChild.SetActive(false);
+        sr.sprite = tombstone;
         ScoreTracker.AddScore(killScore);
 
         //enter tombstone state, we want the bodies to linger for a while so we can grab them during inversion

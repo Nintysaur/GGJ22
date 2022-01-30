@@ -121,6 +121,7 @@ public class PlayerController : BaseInvertable, IMortalObject
             Dead = true;
             //Game Over
             print("GameOver");
+            GameController.GameOver();
         }
     }
 

@@ -23,6 +23,10 @@ public class Projectile : BaseInvertable
         {
             movement.Move(transform.up);
         }
+        else
+        {
+            movement.Move(Vector2.zero);
+        }
         
     }
 
