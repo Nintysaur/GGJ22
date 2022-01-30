@@ -108,6 +108,14 @@ public class EnemyController : BaseInvertable, IMortalObject
         }
     }
 
+    protected override void SwitchToInvertedWorld()
+    {
+        if (Dead)
+        {
+            sr.sprite = invertedSprite;
+        }
+    }
+
     public void Damage(int value)
     {
         Die();
