@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalSprite: {fileID: 0}
   invertedSprite: {fileID: 21300000, guid: 7198331f17b30b3498fcd606f62ff6dc, type: 3}
-  shootCoolDown: 2
+  shootCoolDown: 1
   Projectile: {fileID: 2217628061747364579, guid: e1d04f37b1dea264baaac2cd8116ae10, type: 3}
   tombstoneDuration: 12
   killScore: 100
