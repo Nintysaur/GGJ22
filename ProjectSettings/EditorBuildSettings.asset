@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestsScenes/EilidhScene.unity
-    guid: a704e679c9fe8a6449a4bb5a9dbfd918
+    path: Assets/Scenes/Levels/MainMenu.unity
+    guid: e2855f4d0605e1742b00945e555b6905
   - enabled: 1
-    path: Assets/Scenes/TestsScenes/EilidhScene2.unity
-    guid: e735724263d0dac40b55a964584a367b
+    path: Assets/Scenes/Levels/MainScene.unity
+    guid: 680817f634380fd4baba23d9e099ba0f
   m_configObjects: {}
