@@ -27,4 +27,9 @@ public class TopDownMovement: MonoBehaviour
 
         rb.velocity = direction * moveSpeed;
     }
+
+    public float GetSpeed()
+    {
+        return rb.velocity.magnitude;
+    }
 }

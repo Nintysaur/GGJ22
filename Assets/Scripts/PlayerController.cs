@@ -15,6 +15,8 @@ public class PlayerController : BaseInvertable, IMortalObject
     [SerializeField] float reloadTime = 0.6f;
     float reloadedAt;
 
+    [SerializeField] Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +26,26 @@ public class PlayerController : BaseInvertable, IMortalObject
         HealthCurrent = HealthMax;
 
         gc = FindObjectOfType<GameController>();
-    }
 
+        if (anim == null)
+        {
+            print("No animator found!");
+        }
+    }
+    
+    // Update is called once per frame
     void Update()
     {
+        HandleInput();
+        HandleAnims();
+    }
+
+    void HandleInput()
+    {
+        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        movement.Move(input);
+
         if (Input.GetMouseButtonDown(0) && Time.time > reloadedAt)
         {
             Plane plane = new Plane(Vector3.forward, 0);
@@ -42,20 +60,25 @@ public class PlayerController : BaseInvertable, IMortalObject
 
             reloadedAt = Time.time + reloadTime;
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            gc.RequestWorldInversion();
+        }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void HandleAnims()
     {
-        HandleInput();
-    }
+        //Speed
+        float speed = movement.GetSpeed();
+        anim.SetFloat("Speed", speed);
 
-    void HandleInput()
-    {
-        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        //Are we firing? anim lasts for like 0.2f
+        if (Time.time >= (reloadedAt - reloadTime) + 0.08f)
+        {
+            anim.SetBool("IsAttacking", false);
+        }
 
-        movement.Move(input);
-        
     }
 
     protected void Shoot(Vector2 heading)
@@ -66,6 +89,8 @@ public class PlayerController : BaseInvertable, IMortalObject
 
         GameController.RegisterInvertable(proj);
         proj.caster = gameObject;
+
+        anim.SetBool("IsAttacking", true);
     }
 
     public void Damage(int value)

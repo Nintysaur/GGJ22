@@ -18,6 +18,9 @@ public class EnemyController : BaseInvertable, IMortalObject
     public float tombstoneDuration = 12.0f;
     float tombstoneExpiresAt = 0.0f;
 
+    [SerializeField] int killScore = 100;
+    [SerializeField] int eatScore = 40;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,6 +92,22 @@ public class EnemyController : BaseInvertable, IMortalObject
         proj.caster = gameObject;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+
+        if (inverted && Dead && (player != null))
+        {
+            //if its the player
+            player.Heal(1);
+
+            ScoreTracker.AddScore(eatScore);
+
+            GameController.RemoveInvertable(this);
+            Destroy(gameObject);
+        }
+    }
+
     public void Damage(int value)
     {
         Die();
@@ -102,6 +121,8 @@ public class EnemyController : BaseInvertable, IMortalObject
     public void Die()
     {
         Dead = true;
+
+        ScoreTracker.AddScore(killScore);
 
         //enter tombstone state, we want the bodies to linger for a while so we can grab them during inversion
         tombstoneExpiresAt = Time.time + tombstoneDuration;

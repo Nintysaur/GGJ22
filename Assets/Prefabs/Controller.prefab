@@ -44,3 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 0}
+  inversionDuration: 5
+  inversionCoolDown: 15
+  enemyPrefab: {fileID: 0}
+  spawnCooldown: 5
+  spawnCheck: 1
+  materialReference: {fileID: 2100000, guid: 564b100563b98ad48b1fd30692a0bfda, type: 2}

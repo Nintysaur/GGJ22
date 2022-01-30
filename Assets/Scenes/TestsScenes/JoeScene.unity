@@ -489,6 +489,10 @@ PrefabInstance:
       propertyPath: playerObject
       value: 
       objectReference: {fileID: 1810764085}
+    - target: {fileID: 2692139651446784679, guid: 252b56f714074a54d9b4310d1dd82a3f, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 8712659956344049033, guid: cc4cd65182afe5b489055f04a0035db8, type: 3}
     - target: {fileID: 2692139651446784696, guid: 252b56f714074a54d9b4310d1dd82a3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -545,6 +549,10 @@ PrefabInstance:
     - target: {fileID: 8712659956344049033, guid: cc4cd65182afe5b489055f04a0035db8, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712659956344049033, guid: cc4cd65182afe5b489055f04a0035db8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8712659956344049034, guid: cc4cd65182afe5b489055f04a0035db8, type: 3}
       propertyPath: m_LocalPosition.x
