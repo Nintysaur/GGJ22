@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TopDownMovement))]
-public class EnemyController : BaseInvertable
+public class EnemyController : BaseInvertable, IMortalObject
 {
     TopDownMovement movement;
     Transform target;
@@ -13,7 +13,11 @@ public class EnemyController : BaseInvertable
     float shotReady;
 
     [SerializeField] private GameObject Projectile;
-    
+    public bool Dead { get; set; }
+
+    public float tombstoneDuration = 12.0f;
+    float tombstoneExpiresAt = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +36,24 @@ public class EnemyController : BaseInvertable
     // Update is called once per frame
     void FixedUpdate()
     {
-        ProcessBehaviour();
+        if (!Dead)
+        {
+            ProcessBehaviour();
+        }
+        else
+        {
+            movement.Move(Vector2.zero);
+            
+            if (Time.time > tombstoneExpiresAt)
+            {
+                GameController.RemoveInvertable(this);
+                Destroy(gameObject);
+            }
+        }        
     }
     private void ProcessBehaviour()
     {
+        
         if (!inverted)
         {
             //Normal
@@ -69,5 +87,23 @@ public class EnemyController : BaseInvertable
 
         GameController.RegisterInvertable(proj);
         proj.caster = gameObject;
+    }
+
+    public void Damage(int value)
+    {
+        Die();
+    }
+
+    public void Heal(int value)
+    {
+        //Not called
+    }
+
+    public void Die()
+    {
+        Dead = true;
+
+        //enter tombstone state, we want the bodies to linger for a while so we can grab them during inversion
+        tombstoneExpiresAt = Time.time + tombstoneDuration;
     }
 }

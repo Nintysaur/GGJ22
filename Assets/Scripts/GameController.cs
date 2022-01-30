@@ -7,6 +7,12 @@ public class GameController : MonoBehaviour
     static List<BaseInvertable> Invertables;
 
     [SerializeField] BaseInvertable playerObject;
+    [SerializeField] float inversionDuration = 5.0f;
+    [SerializeField] float inversionCoolDown = 15.0f;
+
+    float inversionReadyAt = 0.0f;
+    float inversionExpiresAt = 0.0f;
+
 
     private void Awake()
     {
@@ -23,11 +29,10 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //TEMPORARY
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (BaseInvertable.inverted && inversionExpiresAt < Time.time)
         {
             InvertWorlds();
-        }
+        }        
     }
 
     private void InvertWorlds()
@@ -48,7 +53,27 @@ public class GameController : MonoBehaviour
         {
             BaseInvertable.inverted = true;
         }
+
+        print("Inverted");
     }
+
+    public bool RequestWorldInversion()
+    {
+        float time = Time.time;
+        
+        //Check if inversion is ready
+        if (time > inversionReadyAt)
+        {
+            InvertWorlds();
+            inversionReadyAt = time + inversionCoolDown;
+            inversionExpiresAt = time + inversionDuration;
+
+            return true;
+        }
+
+        return false;
+    }
+
 
     public static void RegisterInvertable(BaseInvertable newInvertable )
     {

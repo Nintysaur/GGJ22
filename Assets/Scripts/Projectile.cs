@@ -19,7 +19,11 @@ public class Projectile : BaseInvertable
     // Update is called once per frame
     void FixedUpdate()
     {
-        movement.Move(transform.up);
+        if (!inverted)
+        {
+            movement.Move(transform.up);
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,13 +33,16 @@ public class Projectile : BaseInvertable
             return;
         }
 
-        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-        if (player != null) //If the thing we hit was the player
+        //Try to find something we can damage
+        IMortalObject target = collision.gameObject.GetComponent<IMortalObject>();
+        if (target != null && !target.Dead) //If the thing we hit can be damaged
         {
-            print("Hit player");
+            print("Hit Mortal Object");
+            target.Damage(1);
         }
 
-        print("Hit");
-        Destroy(this);
+        //print("Hit");
+        GameController.RemoveInvertable(this);
+        Destroy(gameObject);
     }
 }
